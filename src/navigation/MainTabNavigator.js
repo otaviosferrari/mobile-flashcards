@@ -1,47 +1,43 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createAppContainer, createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import DecksScreen from '../screens/DecksScreen';
+import DeckScreen from '../screens/DeckScreen';
+import QuizScreen from '../screens/QuizScreen';
+import NewDeckScreen from '../screens/NewDeckScreen';
+import NewCardScreen from '../screens/NewCardScreen';
+import { black } from '../constants/Colors';
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-
-const HomeStack = createStackNavigator(
+const DecksStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Decks: { screen: DecksScreen },
+    Deck: { screen: DeckScreen },
+    Quiz: { screen: QuizScreen },
+    AddCard: { screen: NewCardScreen },
+  },
+  {
+    initialRouteName: 'Decks'
   }
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-const LinksStack = createStackNavigator(
-  {
-    Links: LinksScreen,
+DecksStack.navigationOptions = {
+  tabBarLabel: 'Decks',
+  tabBarOptions: {
+    activeTintColor: black,
   }
-);
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
 };
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack
+const NewDeckStack = createStackNavigator({
+  NewDeck: NewDeckScreen,
 });
 
-export default createAppContainer(tabNavigator);
+NewDeckStack.navigationOptions = {
+  tabBarLabel: 'New Deck',
+  tabBarOptions: {
+    activeTintColor: black,
+  }
+};
+
+
+export default createBottomTabNavigator({
+  DecksStack,
+  NewDeckStack,
+});

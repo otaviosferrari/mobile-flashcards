@@ -1,14 +1,4 @@
-const tintColor = '#2f95dc';
-
-export default {
-  tintColor,
-  tabIconDefault: '#ccc',
-  tabIconSelected: tintColor,
-  tabBar: '#fefefe',
-  errorBackground: 'red',
-  errorText: '#fff',
-  warningBackground: '#EAEB5E',
-  warningText: '#666804',
-  noticeBackground: tintColor,
-  noticeText: '#fff',
-};
+export const ghostWhite  = '#F8F8FF';
+export const black = '#000000'
+export const red = '#B20000';
+export const green = '#006B00';
