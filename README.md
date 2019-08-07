@@ -30,5 +30,5 @@ $ npm start
 │   │   ├── QuizScreen.js
 │   │   └── DecksScreen.js
 │   ├── utils
-        ├── api.js
-        └── helpers.js
+|   |   ├── api.js
+|   |   └── helpers.js
